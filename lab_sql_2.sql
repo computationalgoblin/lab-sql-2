@@ -40,7 +40,7 @@ from film
 where length > 180;
 
 -- 10 Get the name and email formatted. Example: Mary SMITH - mary.smith@sakilacustomer.org.
-select lower(email)
+select concat(substr(email, 1, 1), lower(substr(email, 2, instr(email, '.') - 2)), " ", upper(substr(email, instr(email, '.') + 1, instr(email, '@') - instr(email, '.') - 1)), " - ", lower(email)) as name_and_email
 from customer;
 
 -- 11 What's the length of the longest film title?
